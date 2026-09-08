@@ -1,0 +1,27 @@
+---
+description: Always-on product principles for the AI Marketing Analyst MVP-0
+alwaysApply: true
+---
+
+# Product principles
+
+North star: **"I would change what I'm doing because of this insight."**
+
+## Non-negotiable
+
+1. **Evidence before intelligence** — Deterministic code finds what happened; OpenAI only words validated evidence packs.
+2. **Facts ≠ hypotheses** — Keep Finding / Evidence / Hypothesis / Recommendation distinct. Never present a hypothesis as fact.
+3. **Prefer silence over noise** — Detectors may return nothing. Sample size and practical impact gate every result.
+4. **Traceable numbers only** — Reject any insight whose numbers/entities are not in the evidence pack. Never invent or silently repair.
+
+## MVP-0 scope
+
+Build: fixtures → KPIs → detectors → rank → OpenAI → validate → attention feed.
+
+Do **not** build: live Google Ads, Eve, cron/workers, Meta/GA4, Ask chat, dashboard-first UI, autonomous bid/budget changes, extra infra without a concrete MVP-0 need.
+
+Auth (Better Auth) only if deploying for dogfooding; local single-org is enough otherwise.
+
+## YAGNI
+
+Ship the smallest trustworthy insight loop. Extract reusable skills from working code later — do not pre-build skill libraries.
