@@ -8,6 +8,8 @@ import {
 import { RunAnalysisButton } from "@/components/run-analysis-button";
 import { Separator } from "@/components/ui/separator";
 
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   const app = await getAppState();
 

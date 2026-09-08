@@ -13,30 +13,31 @@ function templateInsight(pack: EvidencePack): GeneratedInsight {
 
   const hypothesis = `Traffic quality or auction dynamics may have shifted. This is a hypothesis, not a confirmed cause.`;
   const absChange = Math.abs(pack.finding.changePct);
+  const fmt = (n: number) => Number(n.toFixed(2)).toString();
 
   return {
     severity: pack.severity,
-    finding: `${pack.campaignName}: ${pack.finding.metric} ${direction} ${absChange}% (${pack.finding.previous} → ${pack.finding.current}).`,
+    finding: `${pack.campaignName}: ${pack.finding.metric} ${direction} ${fmt(absChange)}% (${fmt(pack.finding.previous)} → ${fmt(pack.finding.current)}).`,
     whyNow: `Compared ${pack.comparisonWindow.previous} with ${pack.comparisonWindow.current} (${pack.comparisonWindow.label}). Evidence strength is ${pack.evidenceStrength}.`,
     evidence: [
-      { label: "Current", value: pack.finding.current },
-      { label: "Previous", value: pack.finding.previous },
-      { label: "Change %", value: pack.finding.changePct },
+      { label: "Current", value: Number(pack.finding.current.toFixed(2)) },
+      { label: "Previous", value: Number(pack.finding.previous.toFixed(2)) },
+      { label: "Change %", value: Number(pack.finding.changePct.toFixed(2)) },
       {
         label: "Current spend",
-        value: pack.supportingMetrics.currentSpend ?? 0,
+        value: Number((pack.supportingMetrics.currentSpend ?? 0).toFixed(2)),
       },
       {
         label: "Previous spend",
-        value: pack.supportingMetrics.previousSpend ?? 0,
+        value: Number((pack.supportingMetrics.previousSpend ?? 0).toFixed(2)),
       },
       {
         label: "Current conversions",
-        value: pack.sampleSize.currentConversions,
+        value: Number(pack.sampleSize.currentConversions.toFixed(2)),
       },
       {
         label: "Previous conversions",
-        value: pack.sampleSize.previousConversions,
+        value: Number(pack.sampleSize.previousConversions.toFixed(2)),
       },
     ],
     hypothesis,

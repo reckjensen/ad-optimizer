@@ -5,6 +5,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
+export const dynamic = "force-dynamic";
+
 export default async function InsightDetailPage({
   params,
 }: {
